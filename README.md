@@ -1,4 +1,6 @@
 # Deques_RandomizedQueues
+Coursera: Algorithms Part 1 - Princeton University
+
 Implement a generic data type for a deque and a randomized queue using arrays and linked lists
 
 **Dequeue.** A *double-ended queue* or deque (pronounced "deck") is a generalization of a stack and a queue that supports adding and removing items from either the front or the back of the data structure. Create a generic data type Deque that implements the following API:
