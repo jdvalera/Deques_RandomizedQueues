@@ -2,6 +2,13 @@ import java.util.Iterator;
 
 public class RandomizedQueue<Item> implements Iterable<Item> {
 	
+	private Node first = null;
+	
+	private class Node<Item> {
+		Item item;
+		Node next;
+	}
+	
 	// construct an empty randomized queue
 	public RandomizedQueue() {
 		
