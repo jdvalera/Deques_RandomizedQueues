@@ -2,6 +2,14 @@ import java.util.Iterator;
 
 public class Deque<Item> implements Iterable<Item> {
 	
+	private Node first = null;
+	
+	// private Node inner class
+	private class Node<Item> {
+		Item item;
+		Node next;
+	}
+	
 	// construct an empty deque
 	public Deque() {
 		// TODO Fill in constructor
