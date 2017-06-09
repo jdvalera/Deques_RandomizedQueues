@@ -3,6 +3,7 @@ import java.util.Iterator;
 public class Deque<Item> implements Iterable<Item> {
 	
 	private Node first = null;
+	private Node last = null;
 	
 	// private Node inner class
 	private class Node<Item> {
@@ -13,11 +14,12 @@ public class Deque<Item> implements Iterable<Item> {
 	// construct an empty deque
 	public Deque() {
 		// TODO Fill in constructor
+		first = last;
 	}
 	
 	// is the deque empty?
 	public boolean isEmpty() {
-		return false;	
+		return first == last;	
 	}
 	
 	// return the number of items on the deque
@@ -27,12 +29,25 @@ public class Deque<Item> implements Iterable<Item> {
 	
 	// add the item to the front
 	public void addFirst(Item item) {
-		
+		Node oldFirst = first;
+		first = new Node();
+		if(isEmpty()) last = first;
+		first.item = item;
+		first.next = oldFirst;
 	}
 	
 	// add the item to the end
 	public void addLast(Item item) {
-		
+		Node newLast = new Node();
+		newLast.item = item;
+		newLast.next = null;
+		if(isEmpty()) {
+			last = newLast;
+			first = newLast;
+		} else {
+			last.next = newLast;
+			last = newLast;
+		}
 	}
 	
 	// remove and return the item from the front
