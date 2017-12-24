@@ -4,6 +4,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 	
 	private Item[] q;
 	private int capacity = 0;
+	private int current = 0;
 	
 	// construct an empty randomized queue
 	public RandomizedQueue() {
@@ -12,16 +13,17 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 	
 	// is the queue empty?
 	public boolean isEmpty() {
-		return false;
+		return capacity <= 0;
 	}
 	
 	// return the number of items on the queue
 	public int size(){
-		return 0;
+		return capacity;
 	}
 	
 	// add the item
 	public void enqueue(Item item) {
+		if(current == capacity) resize(2*capacity);
 	}
 	
 	// remove and return a random item
@@ -39,6 +41,13 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 	public Iterator<Item> iterator() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	private void resize(int capacity) {
+		Item[] copy = (Item[]) new Object[capacity];
+		for (int i = 0; i < current; i++)
+			copy[i] = q[i];
+		q = copy;
 	}
 	
 	// unit testing
