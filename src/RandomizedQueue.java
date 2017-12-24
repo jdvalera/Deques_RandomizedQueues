@@ -1,5 +1,7 @@
 import java.util.Iterator;
 
+import edu.princeton.cs.algs4.StdRandom;
+
 public class RandomizedQueue<Item> implements Iterable<Item> {
 	
 	private Item[] q;
@@ -29,7 +31,12 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 	
 	// remove and return a random item
 	public Item dequeue() {
-		return null;
+		int randIndex = StdRandom.uniform(N);
+		Item item = q[randIndex];
+		q[randIndex] = q[--N];
+		q[N] = null;
+		if (N > 0 && N == q.length/4) resize(q.length/2);
+		return item;
 	}
 	
 	// return (but do not remove) a random item
@@ -55,10 +62,16 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 	public static void main(String[] args) {
 		RandomizedQueue<Integer> q = new RandomizedQueue<Integer>();
 		System.out.println(q.isEmpty());
-		q.enqueue(1);
-		System.out.println(q.isEmpty());
-		q.enqueue(2);
 		q.enqueue(3);
+		System.out.println(q.isEmpty());
+		q.enqueue(1);
+		q.enqueue(2);
+		System.out.println(q.size());
+		System.out.println("Popped " + q.dequeue());
+		System.out.println(q.size());
+		System.out.println("Popped " + q.dequeue());
+		System.out.println(q.size());
+		System.out.println("Popped " + q.dequeue());
 		System.out.println(q.size());
 	}
 
