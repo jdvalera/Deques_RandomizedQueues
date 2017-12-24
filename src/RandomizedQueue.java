@@ -3,27 +3,28 @@ import java.util.Iterator;
 public class RandomizedQueue<Item> implements Iterable<Item> {
 	
 	private Item[] q;
-	private int capacity = 0;
-	private int current = 0;
+	private int N = 0;
 	
 	// construct an empty randomized queue
 	public RandomizedQueue() {
 		q = (Item[]) new Object[1];
+		q[0] = null;
 	}
 	
 	// is the queue empty?
 	public boolean isEmpty() {
-		return capacity <= 0;
+		return N <= 0;
 	}
 	
 	// return the number of items on the queue
 	public int size(){
-		return capacity;
+		return N;
 	}
 	
 	// add the item
 	public void enqueue(Item item) {
-		if(current == capacity) resize(2*capacity);
+		if(N == q.length) resize(2*q.length);
+		q[N++] = item;
 	}
 	
 	// remove and return a random item
@@ -45,14 +46,19 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 	
 	private void resize(int capacity) {
 		Item[] copy = (Item[]) new Object[capacity];
-		for (int i = 0; i < current; i++)
+		for (int i = 0; i < N; i++)
 			copy[i] = q[i];
 		q = copy;
 	}
 	
 	// unit testing
 	public static void main(String[] args) {
-
+		RandomizedQueue<Integer> q = new RandomizedQueue<Integer>();
+		System.out.println(q.isEmpty());
+		q.enqueue(1);
+		System.out.println(q.isEmpty());
+		//q.enqueue(2);
+		System.out.println(q.size());
 	}
 
 }
