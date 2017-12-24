@@ -8,7 +8,6 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 	private int N = 0;
 	
 	// construct an empty randomized queue
-	@SuppressWarnings("unchecked")
 	public RandomizedQueue() {
 		q = (Item[]) new Object[1];
 		q[0] = null;
@@ -63,7 +62,6 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 	private class rmIterator implements Iterator<Item> {
 		
 		private int i = N;
-		@SuppressWarnings("unchecked")
 		Item[] copy = (Item[]) new Object[N];
 		
 		public rmIterator() {
@@ -82,6 +80,8 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 		@Override
 		public Item next() {
 			// TODO Auto-generated method stub
+			if(i <= 0)
+				throw new java.util.NoSuchElementException();
 			return copy[--i];
 		}
 		
@@ -93,7 +93,6 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 	}
 	
 	private void resize(int capacity) {
-		@SuppressWarnings("unchecked")
 		Item[] copy = (Item[]) new Object[capacity];
 		for (int i = 0; i < N; i++)
 			copy[i] = q[i];
