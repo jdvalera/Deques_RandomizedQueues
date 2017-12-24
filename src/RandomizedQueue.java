@@ -60,17 +60,27 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 	}
 	
 	private class rmIterator implements Iterator<Item> {
+		
+		private int i = N;
+		Item[] copy = (Item[]) new Object[N];
+		
+		public rmIterator() {
+			for (int i = 0; i < N; i++)
+				copy[i] = q[i];
+			
+			StdRandom.shuffle(copy);
+		}
 
 		@Override
 		public boolean hasNext() {
 			// TODO Auto-generated method stub
-			return false;
+			return i > 0;
 		}
 
 		@Override
 		public Item next() {
 			// TODO Auto-generated method stub
-			return null;
+			return copy[--i];
 		}
 		
 		@Override
@@ -96,12 +106,16 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 		q.enqueue(1);
 		q.enqueue(2);
 		System.out.println(q.size());
+		for(int s : q)
+			System.out.println("Element: " + s);
+		
+		/*
 		System.out.println("Popped " + q.dequeue());
 		System.out.println(q.size());
 		System.out.println("Popped " + q.dequeue());
 		System.out.println(q.size());
 		System.out.println("Popped " + q.dequeue());
-		System.out.println(q.size());
+		System.out.println(q.size());*/
 	}
 
 }
