@@ -114,6 +114,10 @@ public class Deque<Item> implements Iterable<Item> {
 			return item;
 		}
 		
+		@Override
+		public void remove() {
+			throw new java.lang.UnsupportedOperationException();
+		}
 	}
 	
 	// unit testing
