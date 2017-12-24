@@ -57,7 +57,8 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 		System.out.println(q.isEmpty());
 		q.enqueue(1);
 		System.out.println(q.isEmpty());
-		//q.enqueue(2);
+		q.enqueue(2);
+		q.enqueue(3);
 		System.out.println(q.size());
 	}
 
